@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import deleteItem from './Delete';
 
 
 
@@ -57,6 +58,14 @@ class Add extends Component {
    
    
    class List extends Component {
+     deleteItem(id){
+       console.log( 'id :',id);
+       let itemlist =this.props.items;
+       console.log( 'list :',itemlist)
+       const newList= itemlist.filter(item=>item.id !== id);
+      
+       return console.log('new :',newList)
+     }
    
      render() {
        return (
@@ -64,7 +73,11 @@ class Add extends Component {
      <ul>
        {this.props.items.map((item,id)=>
        (
-         <li key={id}>{item.text}</li>
+         <li key={id}>
+         <input type="checkbox" />
+           {item.text}
+           <button type="submit" onClick={this.deleteItem(item.id)}>Delete</button>
+           </li>
        ))}
        </ul>
    </div> 
