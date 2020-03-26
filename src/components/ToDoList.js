@@ -137,14 +137,14 @@ class List extends Component {
               <input
                 className="checkmark"
                 type="checkbox"
-                checked={items.completed}
-                onChange={() => this.props.handleChange(items.id)}
+                checked={item.completed}
+                onChange={() => this.props.handleChange(item.id)}
                 />
                 {"   "}
-              {items.text}
+              {item.text}
               </div>
               <div className="ButtonsDiv">
-              <button className="Removebtn" onClick={() => this.props.removeItem(items.id)}>
+              <button className="Removebtn" onClick={() => this.props.removeItem(item.id)}>
                 remove
               </button>
               <button className="Removebtn" onClick={()=>this.props.editItem(item.text,item.id)}>Edit</button>
