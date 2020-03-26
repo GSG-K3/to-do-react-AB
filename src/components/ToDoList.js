@@ -16,7 +16,7 @@ class ToDoList extends Component {
 
   getup = (e) => {
     let items = this.state.items;
-    console.log(items);
+    console.log("getyp",items);
     e.preventDefault();
     if (!this.state.text.length) {
       return;
@@ -32,10 +32,17 @@ class ToDoList extends Component {
       items: this.state.items.concat(newItem),
       text: ""
     }));
-    localStorage.setItem("text",newItem.text);
-    localStorage.setItem("id" ,newItem.id)
-    localStorage.setItem("completed",newItem.completed)
+    // localStorage.setItem("items",JSON.stringify(items));
+
   }
+  // removeItem = (id) => {                // local Storage
+  //   const remainder = JSON.parse(localStorage.getItem('items')).filter((todo) => {
+  //     if (todo.id !== id) return todo;
+  //     console.log("data",localStorage.getItem('items') );
+  //   });
+  //  localStorage.setItem("items", JSON.stringify( remainder) );
+  // };
+
   removeItem = (id) => {
     const remainder = this.state.items.filter((todo) => {
       if (todo.id !== id) return todo;
@@ -45,6 +52,18 @@ class ToDoList extends Component {
     this.setState({ items: remainder });
     console.log("set", remainder);
   };
+
+  // handleChange = (id) => {                       // local Storage
+  //   const updated = JSON.parse(localStorage.getItem('items')).map((todo) => {
+  //     if (todo.id === id) {
+  //       todo.completed = !todo.completed;
+  //     }
+  //     return todo;
+  //   });
+  //   localStorage.setItem('items',JSON.stringify(updated))
+  //   console.log("cccccc2", updated);
+  // };
+
   handleChange = (id) => {
     const updated = this.state.items.map((todo) => {
       if (todo.id === id) {
@@ -56,10 +75,12 @@ class ToDoList extends Component {
     this.setState({ items: updated });
     console.log("cccccc2", updated);
   };
+
+
   editItem=(itemText,itemID)=>{
     const inputF = document.getElementById('input');
     inputF.value=itemText;
-    this.setState({text:itemText,id:itemID})
+    this.setState({text:itemText})
 this.removeItem(itemID)
 
     // const updatedTask= inputF.value;
@@ -109,7 +130,11 @@ class List extends Component {
       //console.log("props",this.props),
       <div className="List">
         <ul className="ListStyle">
-          {this.props.items.map((item) => (
+          
+          {/* JSON.parse(localStorage.getItem('items'))
+          .map((items) => ( */}
+
+           { this.props.items.map((item) => (
             <li className="ListItem" key={item.id} style={item.completed ? styles : null}>
               <div className="first_li_div">
               <input
