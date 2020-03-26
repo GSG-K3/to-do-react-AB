@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./ToDoList.css";
 
 let styles = { textDecoration: "line-through" };
 
@@ -55,16 +56,26 @@ class ToDoList extends Component {
   render() {
     return (
       <div className="Table">
-        <h1> ToDo List</h1>
+        <h1 className ="Header"> ToDo List</h1>
+        <div className="InputDiv">
+        <input placeholder="Type here ...."
+        className="InputField" 
+        onChange={this.setup} 
+        value={this.state.text} />
+        <button onClick={this.getup} className="Add">
+          Add
+        </button>
+        </div>
+        <div>
+          <fieldset className="ListField">
+            <legend>Your List For Today</legend>
         <List
           items={this.state.items}
           removeItem={this.removeItem}
           handleChange={this.handleChange}
         />
-        <input onChange={this.setup} value={this.state.text} />
-        <button onClick={this.getup} className="Add">
-          Add
-        </button>
+          </fieldset>
+        </div>
       </div>
     );
   }
@@ -75,12 +86,13 @@ class List extends Component {
     return (
       //console.log("props",this.props),
       <div className="List">
-        <ul>
+        <ul className="ListStyle">
           {this.props.items.map((item) => (
-            <li key={item.id} style={item.completed ? styles : null}>
+            <li className="ListItem" key={item.id} style={item.completed ? styles : null}>
               {" "}
               {item.text}
-              <button onClick={() => this.props.removeItem(item.id)}>
+              <div className="ButtonsDiv">
+              <button className="Removebtn" onClick={() => this.props.removeItem(item.id)}>
                 remove
               </button>
               <input
@@ -89,6 +101,7 @@ class List extends Component {
                 checked={item.completed}
                 onChange={() => this.props.handleChange(item.id)}
               />
+              </div>
             </li>
           ))}
         </ul>

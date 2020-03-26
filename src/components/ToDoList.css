@@ -1,0 +1,65 @@
+.Table{
+  margin: 30px;
+}
+
+.Header{
+    font-size: 45px;
+}
+.InputDiv{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 60wv;
+}
+.InputField{
+    font-size: 24px;
+    margin: 15px;
+    box-shadow: 3px 3px 3px gray;
+}
+.Add{
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+  padding: 8px 10px;
+  font-size: 16px; 
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.Add:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+.ListStyle{
+    list-style: none;
+    padding: 0;
+}
+.ListItem{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 15px;
+    background-color: rgba(49, 165, 52, 0.116);
+    padding: 10px 1px;
+}
+.Removebtn{
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    height: 23px;
+}
+.Removebtn:hover{
+    background-color: #4CAF50;
+    color: white;
+}
+.ButtonsDiv{
+    display: flex;
+    flex-direction: row;
+}
+.ListField, legend {
+        margin:0px;
+        padding:20px;
+        }
