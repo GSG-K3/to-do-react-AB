@@ -16,39 +16,6 @@
     margin: 15px;
     box-shadow: 3px 3px 3px gray;
 }
-.InputDiv{
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-
-}
-input{
-    padding: 10px;
-    outline: none;
-    border: 2px solid purple;
-    /* margin: 0 1px; */
-    width:200px ;
-    border-radius: 5px;
-}
-button .delete{
-    padding: 10px 15px;
-    background-color:#700c70 ;
-    box-shadow: 2px 2px 2px 2px #fff;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-}
-
-button:active {
-    box-shadow: 0 0 #fff;
-    transform: translateY(4px);
-  }
-
 .Add{
   /* background-color: white; 
   color: black; 
