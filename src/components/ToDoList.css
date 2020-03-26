@@ -1,5 +1,9 @@
 .Table{
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
   margin: 30px;
+  max-width: 80%;
 }
 
 .Header{
