@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ToDoList.css";
 
-let styles = { textDecoration: "line-through" };
+let styles = { color: "red" };
 class ToDoList extends Component {
   state = {
     text: "hookah",
@@ -44,14 +44,14 @@ class ToDoList extends Component {
   // };
 
   removeItem = (id) => {
-    const remainder = JSON.parse(localStorage.getItem('items')).filter((todo) => {
+    const remainder = this.state.items.filter((todo) => {
       if (todo.id !== id) return todo;
-      console.log("data",localStorage.getItem('items') );
+      console.log("data", this.state.items);
     });
-   localStorage.setItem("items", JSON.stringify( remainder) );
-  };
-
-  // handleChange = (id) => {                       // local Storage
+    console.log("uuuu", remainder);
+    this.setState({ items: remainder });
+    console.log("set", remainder);
+  };  // handleChange = (id) => {                       // local Storage
   //   const updated = JSON.parse(localStorage.getItem('items')).map((todo) => {
   //     if (todo.id === id) {
   //       todo.completed = !todo.completed;
@@ -63,16 +63,16 @@ class ToDoList extends Component {
   // };
 
   handleChange = (id) => {
-    const updated = JSON.parse(localStorage.getItem('items')).map((todo) => {
+    const updated = this.state.items.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
       }
       return todo;
     });
-    localStorage.setItem('items',JSON.stringify(updated))
+
+    this.setState({ items: updated });
     console.log("cccccc2", updated);
   };
-
 
   editItem=(itemText,itemID)=>{
     const inputF = document.getElementById('input');
@@ -133,7 +133,7 @@ class List extends Component {
 
            { this.props.items.map((item) => (
             <li className="ListItem" key={item.id} style={item.completed ? styles : null}>
-              <div className="first_li_div">
+              <div className="first_li_div" >
               <input
                 className="checkmark"
                 type="checkbox"
@@ -144,10 +144,10 @@ class List extends Component {
               {item.text}
               </div>
               <div className="ButtonsDiv">
-              <button className="Removebtn" onClick={() => this.props.removeItem(item.id)}>
+              <button className="Removebtn"  onClick={() => this.props.removeItem(item.id)}>
                 remove
               </button>
-              <button className="Removebtn" onClick={()=>this.props.editItem(item.text,item.id)}>Edit</button>
+              <button className="Removebtn"  onClick={()=>this.props.editItem(item.text,item.id)}>Edit</button>
               
               </div>
             </li>
