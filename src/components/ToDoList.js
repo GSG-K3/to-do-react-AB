@@ -44,13 +44,11 @@ class ToDoList extends Component {
   // };
 
   removeItem = (id) => {
-    const remainder = this.state.items.filter((todo) => {
+    const remainder = JSON.parse(localStorage.getItem('items')).filter((todo) => {
       if (todo.id !== id) return todo;
-      console.log("data", this.state.items);
+      console.log("data",localStorage.getItem('items') );
     });
-    console.log("uuuu", remainder);
-    this.setState({ items: remainder });
-    console.log("set", remainder);
+   localStorage.setItem("items", JSON.stringify( remainder) );
   };
 
   // handleChange = (id) => {                       // local Storage
@@ -65,14 +63,13 @@ class ToDoList extends Component {
   // };
 
   handleChange = (id) => {
-    const updated = this.state.items.map((todo) => {
+    const updated = JSON.parse(localStorage.getItem('items')).map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
       }
       return todo;
     });
-
-    this.setState({ items: updated });
+    localStorage.setItem('items',JSON.stringify(updated))
     console.log("cccccc2", updated);
   };
 
@@ -140,14 +137,14 @@ class List extends Component {
               <input
                 className="checkmark"
                 type="checkbox"
-                checked={item.completed}
-                onChange={() => this.props.handleChange(item.id)}
+                checked={items.completed}
+                onChange={() => this.props.handleChange(items.id)}
                 />
                 {"   "}
-              {item.text}
+              {items.text}
               </div>
               <div className="ButtonsDiv">
-              <button className="Removebtn" onClick={() => this.props.removeItem(item.id)}>
+              <button className="Removebtn" onClick={() => this.props.removeItem(items.id)}>
                 remove
               </button>
               <button className="Removebtn" onClick={()=>this.props.editItem(item.text,item.id)}>Edit</button>
