@@ -1,0 +1,118 @@
+.Table{
+  margin: 30px;
+}
+
+.Header{
+    font-size: 45px;
+}
+.InputDiv{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 60wv;
+}
+.InputField{
+    font-size: 24px;
+    margin: 15px;
+    box-shadow: 3px 3px 3px gray;
+}
+.InputDiv{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+input{
+    padding: 10px;
+    outline: none;
+    border: 2px solid purple;
+    /* margin: 0 1px; */
+    width:200px ;
+    border-radius: 5px;
+}
+button .delete{
+    padding: 10px 15px;
+    background-color:#700c70 ;
+    box-shadow: 2px 2px 2px 2px #fff;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+button:active {
+    box-shadow: 0 0 #fff;
+    transform: translateY(4px);
+  }
+
+.Add{
+  /* background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+  padding: 8px 10px;
+  font-size: 16px; 
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-right: 15px; */
+  
+    margin: 3px;
+    background: #4a148c;
+    color: white;
+    border: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 4px 8px;
+    font-family: "Raleway";
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 2px;
+
+  
+}
+.Add:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+.ListStyle{
+    list-style: none;
+    padding: 0;
+}
+.ListItem{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 15px;
+    background-color: rgba(49, 165, 52, 0.116);
+    padding: 10px 1px;
+}
+.Removebtn{
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    height: 23px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.Removebtn:hover{
+    background-color: #4CAF50;
+    color: white;
+}
+.ButtonsDiv{
+    display: flex;
+    flex-direction: row;
+}
+.ListField, legend {
+        margin:0px;
+        padding:20px;
+        }
+.first_li_div{
+    display: flex;
+    justify-self: start;
+}
