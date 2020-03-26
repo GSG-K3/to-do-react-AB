@@ -16,7 +16,7 @@ class ToDoList extends Component {
 
   getup = (e) => {
     let items = this.state.items;
-    console.log(items);
+    console.log("getyp",items);
     e.preventDefault();
     if (!this.state.text.length) {
       return;
@@ -32,9 +32,17 @@ class ToDoList extends Component {
       items: this.state.items.concat(newItem),
       text: ""
     }));
-    localStorage.setItem("items",JSON.stringify(items));
-    
+    // localStorage.setItem("items",JSON.stringify(items));
+
   }
+  // removeItem = (id) => {                // local Storage
+  //   const remainder = JSON.parse(localStorage.getItem('items')).filter((todo) => {
+  //     if (todo.id !== id) return todo;
+  //     console.log("data",localStorage.getItem('items') );
+  //   });
+  //  localStorage.setItem("items", JSON.stringify( remainder) );
+  // };
+
   removeItem = (id) => {
     const remainder = JSON.parse(localStorage.getItem('items')).filter((todo) => {
       if (todo.id !== id) return todo;
@@ -42,6 +50,18 @@ class ToDoList extends Component {
     });
    localStorage.setItem("items", JSON.stringify( remainder) );
   };
+
+  // handleChange = (id) => {                       // local Storage
+  //   const updated = JSON.parse(localStorage.getItem('items')).map((todo) => {
+  //     if (todo.id === id) {
+  //       todo.completed = !todo.completed;
+  //     }
+  //     return todo;
+  //   });
+  //   localStorage.setItem('items',JSON.stringify(updated))
+  //   console.log("cccccc2", updated);
+  // };
+
   handleChange = (id) => {
     const updated = JSON.parse(localStorage.getItem('items')).map((todo) => {
       if (todo.id === id) {
@@ -52,9 +72,14 @@ class ToDoList extends Component {
     localStorage.setItem('items',JSON.stringify(updated))
     console.log("cccccc2", updated);
   };
-  editItem=(item)=>{
+
+
+  editItem=(itemText,itemID)=>{
     const inputF = document.getElementById('input');
-    inputF.value=item;
+    inputF.value=itemText;
+    this.setState({text:itemText})
+this.removeItem(itemID)
+
     // const updatedTask= inputF.value;
     // const change=()=>{
     //      this.state.items.find((item)=>{
@@ -102,10 +127,12 @@ class List extends Component {
       //console.log("props",this.props),
       <div className="List">
         <ul className="ListStyle">
-          {
-          JSON.parse(localStorage.getItem('items'))
-          .map((items) => (
-            <li className="ListItem" key={items.id} style={items.completed ? styles : null}>
+          
+          {/* JSON.parse(localStorage.getItem('items'))
+          .map((items) => ( */}
+
+           { this.props.items.map((item) => (
+            <li className="ListItem" key={item.id} style={item.completed ? styles : null}>
               <div className="first_li_div">
               <input
                 className="checkmark"
@@ -120,7 +147,7 @@ class List extends Component {
               <button className="Removebtn" onClick={() => this.props.removeItem(items.id)}>
                 remove
               </button>
-              <button className="Removebtn" onClick={()=>this.props.editItem(items.text)}>Edit</button>
+              <button className="Removebtn" onClick={()=>this.props.editItem(item.text,item.id)}>Edit</button>
               
               </div>
             </li>
