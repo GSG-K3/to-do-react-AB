@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Add from './components/Add';
+import ToDoList from './components/ToDoList';
 
 
 
@@ -9,7 +9,7 @@ import Add from './components/Add';
 function App() {
   return (
     <div className="App">
-    <Add/>
+    <ToDoList/>
 
     </div>
   );
